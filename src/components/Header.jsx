@@ -1,5 +1,6 @@
 import React from 'react'
 import NewBudget from './NewBudget'
+import ControlBudget from './ControlBudget'
 
     // extraemos el prop de app.jsx
 const Header = ({
@@ -16,7 +17,9 @@ const Header = ({
         <h1>Control de gastos</h1>
         
         {isValidBudget ? (
-            <p>Control Presupuesto</p>
+            < ControlBudget
+              budget={budget}
+            />
         ): (
             <NewBudget
           budget = {budget}
