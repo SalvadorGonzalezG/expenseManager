@@ -8,6 +8,9 @@ function App() {
   // estado donde el estado inicia como false ya que la primera vez que carga la app comienza como falso el estado.
   const [isValidBudget, setIsValidBudget] = useState(false)
 
+  const handleNewExpense = () => {
+    console.log('Diste clic para añadir nuevo gasto')
+  }
   return (
     <>
       <div>
@@ -23,6 +26,7 @@ function App() {
           <img 
             src={IconNewExpense}
             alt='icono nuevo gasto'
+            onClick={handleNewExpense}
           />
         </div>
         )}
