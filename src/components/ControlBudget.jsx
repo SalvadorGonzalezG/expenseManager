@@ -2,10 +2,10 @@ import React from 'react'
 
 const ControlBudget = ({budget}) => {
 
-    //formato de la cantidad que se ingresa.
+    //formato de la cantidad que se ingresa. "No muta el estado original"
     const currencyFormat = (cantidad) =>{
 
-        return cantidad.toLocalString('en-US',{
+        return cantidad.toLocaleString('en-US',{
             style: 'currency',
             currency: 'USD'
         })
@@ -18,7 +18,13 @@ const ControlBudget = ({budget}) => {
         </div>
         <div className='contenido-presupuesto'>
             <p>
-                <span>Presupuesto: </span> ${budget}
+                <span>Presupuesto: </span> {currencyFormat(budget)}
+            </p>
+            <p>
+                <span>Disponible: </span> {currencyFormat(0)}
+            </p>
+            <p>
+                <span>Gastado: </span> {currencyFormat(0)}
             </p>
         </div>
 
