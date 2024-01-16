@@ -1,15 +1,21 @@
+import {useState} from 'react'
+import Message from './Message'
 
 const NewBudget = ({budget, setBudget}) => {
-
+    // estado local 
+    const [message, setMessage] = useState('')
     // funcion para administrar el budget
     const handleBudgte = (e) =>{
         e.preventDefault() 
         
-        if(!Number(budget) || Number(budget) > 0){
-             console.log("No es un presupuesto valido")
-        } else {
-            console.log(Number(budget))
-        }
+        if(!budget || budget < 0){
+             setMessage("No es un presupuesto valido.")
+
+             return
+        } 
+        // resetear el estado en caso de que el usuario se haya equivocado
+        setMessage('')
+        console.log(budget)
     }
 
   return (
@@ -19,14 +25,18 @@ const NewBudget = ({budget, setBudget}) => {
                 <label>Presupuesto total:</label>
                 <input
                   className="nuevo-presupuesto"
-                  type="text" 
+                  type="number" 
                   placeholder="Ingresa tu presupuesto"
                   value={budget}
-                  onChange={(e)=>setBudget(e.target.value)}
+                  onChange={(e)=>setBudget(Number(e.target.value))}
                   />
                   
             </div>
-            <input type="submit" value="añadir" />
+            <input 
+              type="submit" 
+              value="añadir" 
+              />
+            {message && <Message tipo="error">{message}</Message>}
         </form>
         
     </div>
