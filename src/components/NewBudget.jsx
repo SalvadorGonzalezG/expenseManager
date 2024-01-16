@@ -1,7 +1,11 @@
 import {useState} from 'react'
 import Message from './Message'
 
-const NewBudget = ({budget, setBudget}) => {
+const NewBudget = ({
+    budget, 
+    setBudget, 
+    setIsValidBudget
+}) => {
     // estado local 
     const [message, setMessage] = useState('')
     // funcion para administrar el budget
@@ -9,13 +13,16 @@ const NewBudget = ({budget, setBudget}) => {
         e.preventDefault() 
         
         if(!budget || budget < 0){
+            // modificacion del estado, enviado a Message.jsx como children.
              setMessage("No es un presupuesto valido.")
-
+            // al ejecutar return se deja de ejecutar el resto del codigo.
              return
         } 
         // resetear el estado en caso de que el usuario se haya equivocado
         setMessage('')
-        console.log(budget)
+        // si es valido el presupuesto modificamos el estado.
+        setIsValidBudget(true)
+        
     }
 
   return (
