@@ -10,10 +10,16 @@ function App() {
   const [isValidBudget, setIsValidBudget] = useState(false)
   // estado para una ventana modal colocandp I.S como false para que se muestre hasta dar click.
   const [ modal, setModal ] = useState(false)
+  // cuando este en true se agrega una clase para hacer la animacion
+  const [animarModal, setAnimarModal] = useState(false)
 
   const handleNewExpense = () => {
     console.log('Haz abierto la ventana modal')
     setModal(true)
+    // funcion para que despues de un segundo muestre el Modal
+    setTimeout(()=>{
+      setAnimarModal(true)
+    }, 1000);
   }
   
   return (
@@ -37,6 +43,8 @@ function App() {
         )}
         {modal && <Modal
                   setModal={setModal}
+                  animarModal={animarModal}
+                  setAnimarModal={setAnimarModal}
         />}
       </div>
     </>
