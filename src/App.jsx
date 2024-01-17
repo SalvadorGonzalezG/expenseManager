@@ -35,7 +35,9 @@ function App() {
           />
         </div>
         )}
-        {modal && <Modal/>}
+        {modal && <Modal
+                  setModal={setModal}
+        />}
       </div>
     </>
   )
