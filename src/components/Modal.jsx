@@ -1,6 +1,10 @@
 import closeWindow from '../img/cancel.png'
+import {useState} from 'react'
 
 const Modal = ({setModal, animarModal, setAnimarModal}) => {
+
+    const [nombre, setNombre] = useState('')
+
     const hideModal = () => {
         console.log('Ocultando la ventana modal.')
         
@@ -9,6 +13,15 @@ const Modal = ({setModal, animarModal, setAnimarModal}) => {
         setTimeout(()=>{
             setModal(false)
         },500)
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        
+        if([nombre, cantidad, categoria].includes('')){
+            console.log("fallo la validacion")
+            return;
+        }
     }
   return (
     <div className="modal">
@@ -19,7 +32,9 @@ const Modal = ({setModal, animarModal, setAnimarModal}) => {
               onClick={hideModal}
             />
         </div>
-        <form className={`formulario ${animarModal ? "animar": 'cerrar' }`}>
+        <form 
+        onSubmit={handleSubmit}
+        className={`formulario ${animarModal ? "animar": 'cerrar' }`}>
             <legend>Nuevo Gasto.</legend>
 
             <div className='campo'>
@@ -29,6 +44,8 @@ const Modal = ({setModal, animarModal, setAnimarModal}) => {
                   id='nombre'
                   type="text"
                   placeholder='Añade el nombre de tu gasto'
+                  value={nombre}
+                  onChange={ e =>setNombre(e.target.value)}
                   />
             </div>
 
