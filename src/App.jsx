@@ -1,16 +1,21 @@
 import { useState } from 'react'
 import Header from './components/Header'
-import IconNewExpense from './img/nuevo-gasto.svg'
+import IconNewExpense from './img/button.png'
+import Modal from './components/Modal'
 
 function App() {
   // estado para presupuesto inicializado en 0.
   const [budget, setBudget]= useState(0)
   // estado donde el estado inicia como false ya que la primera vez que carga la app comienza como falso el estado.
   const [isValidBudget, setIsValidBudget] = useState(false)
+  // estado para una ventana modal colocandp I.S como false para que se muestre hasta dar click.
+  const [ modal, setModal ] = useState(false)
 
   const handleNewExpense = () => {
-    console.log('Diste clic para añadir nuevo gasto')
+    console.log('Haz abierto la ventana modal')
+    setModal(true)
   }
+  
   return (
     <>
       <div>
@@ -30,7 +35,7 @@ function App() {
           />
         </div>
         )}
-        
+        {modal && <Modal/>}
       </div>
     </>
   )
