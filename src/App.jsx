@@ -2,6 +2,8 @@ import { useState } from 'react'
 import Header from './components/Header'
 import IconNewExpense from './img/button.png'
 import Modal from './components/Modal'
+import ExpenseList from './components/ExpenseList'
+import { generarId } from './helpers'
 
 function App() {
   // estado para presupuesto inicializado en 0.
@@ -12,6 +14,8 @@ function App() {
   const [ modal, setModal ] = useState(false)
   // cuando este en true se agrega una clase para hacer la animacion
   const [animarModal, setAnimarModal] = useState(false)
+  // estado de gastos.
+  const [gastos, setGastos] = useState([])
 
   const handleNewExpense = () => {
     console.log('Haz abierto la ventana modal')
@@ -20,6 +24,16 @@ function App() {
     setTimeout(()=>{
       setAnimarModal(true)
     }, 1000);
+  }
+
+  const guardarGasto = (gasto) =>{
+    gasto.id = generarId()
+    setGastos([...gastos, gasto])
+
+    setAnimarModal(false)
+    setTimeout(()=>{
+      setModal(false)
+    }, 500)
   }
   
   return (
@@ -33,6 +47,13 @@ function App() {
         />
 
         {isValidBudget && (
+          <>
+            <main>
+              <ExpenseList
+              gastos={gastos}
+              />
+            </main>
+
           <div className='nuevo-gasto'>
           <img 
             src={IconNewExpense}
@@ -40,11 +61,14 @@ function App() {
             onClick={handleNewExpense}
           />
         </div>
+        </>
         )}
+
         {modal && <Modal
                   setModal={setModal}
                   animarModal={animarModal}
                   setAnimarModal={setAnimarModal}
+                  guardarGasto={guardarGasto}
         />}
       </div>
     </>
