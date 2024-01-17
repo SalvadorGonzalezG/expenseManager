@@ -4,6 +4,7 @@ import ControlBudget from './ControlBudget'
 
     // extraemos el prop de app.jsx
 const Header = ({
+    gastos,
     budget,
     setBudget, 
     isValidBudget, 
@@ -18,6 +19,7 @@ const Header = ({
         
         {isValidBudget ? (
             < ControlBudget
+              gastos={gastos}
               budget={budget}
             />
         ): (
