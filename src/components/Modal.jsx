@@ -2,7 +2,7 @@ import closeWindow from '../img/cancel.png'
 import Message from './Message'
 import {useState, useEffect} from 'react'
 
-const Modal = ({setModal, animarModal, setAnimarModal, guardarGasto, editGasto}) => {
+const Modal = ({setModal, animarModal, setAnimarModal, guardarGasto, editGasto, setEditGasto}) => {
         // nombre, cantidad, categoria de los gastos.
     const [nombre, setNombre] = useState('')
     const [cantidad, setCantidad] = useState(0)
@@ -23,7 +23,7 @@ const Modal = ({setModal, animarModal, setAnimarModal, guardarGasto, editGasto})
 
     const hideModal = () => {
         console.log('Ocultando la ventana modal.')
-        
+        setEditGasto({})
         setAnimarModal(false)
 
         setTimeout(()=>{
