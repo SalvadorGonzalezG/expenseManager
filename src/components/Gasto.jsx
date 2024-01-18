@@ -9,6 +9,8 @@ import pets from '../img/vet.png'
 import train from '../img/train.png'
 import subsciptions from '../img/subscribe.png'
 import other from '../img/application.png'
+import { FaRegEdit } from "react-icons/fa";
+import { RiDeleteBin5Line } from "react-icons/ri";
 
 
 const dictionaryIcons = {
@@ -25,19 +27,28 @@ const dictionaryIcons = {
 const Gasto = ({ gasto }) => {
     // desestructuracion del prop de gasto
     const { nombre, categoria, cantidad, id, date } = gasto;
-
-    const leadingActions = () => {
-        console.log('Editar Gasto')
-    }
-    const trailingActions = () => {
-        console.log('Eliminar Gasto')
-    }
+    // funcion que permitira el movimiento hacia la parte derecha mostrando editar para que el gasto sea editado.
+    const leadingActions = () => (
+        <LeadingActions>
+            <SwipeAction onClick={()=>console.log('Edit')}>
+                <FaRegEdit/>
+            </SwipeAction>
+        </LeadingActions>
+    )
+    //Funcion que permitira mover el gasto hacia la izquierda para poder Eliminar dicho gasto.
+    const trailingActions = () => (
+        <TrailingActions>
+            <SwipeAction onClick={()=>console.log('eliminar')}>
+                <RiDeleteBin5Line/>
+            </SwipeAction>
+        </TrailingActions>
+    )
 
     return (
         <SwipeableList>
             <SwipeableListItem
-                leadingActions={leadingActions}
-                trailingActions={trailingActions}
+                leadingActions={leadingActions()}
+                trailingActions={trailingActions()}
             >
                 <div className='gasto sombra'>
                     <div className="contenido-gasto">

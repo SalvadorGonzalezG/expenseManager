@@ -387,13 +387,13 @@ body .modal {
 
 /*** SWIPE LIST OVERRIDES **/
 .swipe-action__leading {
-    background-color: var(--magenta);
+    background-color: rgb(11, 77, 244);
     color: var(--blanco);
     margin-bottom: 2rem;
 }
 
 .swipe-action__trailing {
-    background-color: #db2777;
+    background-color: #f34b18;
     margin-bottom: 2rem;
     color: var(--blanco);
 }
