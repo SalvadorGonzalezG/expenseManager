@@ -24,7 +24,7 @@ const dictionaryIcons = {
 }
 
 
-const Gasto = ({ gasto, setEditGasto }) => {
+const Gasto = ({ gasto, setEditGasto, deleteGasto }) => {
     // desestructuracion del prop de gasto
     const { nombre, categoria, cantidad, id, date } = gasto;
     // funcion que permitira el movimiento hacia la parte derecha mostrando editar para que el gasto sea editado.
@@ -38,7 +38,7 @@ const Gasto = ({ gasto, setEditGasto }) => {
     //Funcion que permitira mover el gasto hacia la izquierda para poder Eliminar dicho gasto.
     const trailingActions = () => (
         <TrailingActions>
-            <SwipeAction onClick={()=>console.log('eliminar')}>
+            <SwipeAction onClick={()=>deleteGasto(id)}>
                 <RiDeleteBin5Line/>
             </SwipeAction>
         </TrailingActions>

@@ -52,13 +52,17 @@ function App() {
     gasto.date = Date.now() //fecha cuando se generas el nuevo gasto.
     setGastos([...gastos, gasto])
     }
-    
 
     setAnimarModal(false)
     setTimeout(()=>{
       setModal(false)
     }, 500)
   }
+    // Elimar un gasto utilizando el id generado previamente sera pasado al ExpenseList
+    const deleteGasto = (id)=>{
+      console.log('Eliminando el gasto con id:', id)
+    }
+    
   
   return (
     <>
@@ -77,6 +81,7 @@ function App() {
               <ExpenseList
               gastos={gastos}
               setEditGasto={setEditGasto}
+              deleteGasto = {deleteGasto}
               />
             </main>
 
