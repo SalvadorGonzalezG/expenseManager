@@ -60,7 +60,8 @@ function App() {
   }
     // Elimar un gasto utilizando el id generado previamente sera pasado al ExpenseList
     const deleteGasto = (id)=>{
-      console.log('Eliminando el gasto con id:', id)
+      const gastosActualization = gastos.filter( gasto => gasto.id !== id )
+      setGastos(gastosActualization)
     }
     
   

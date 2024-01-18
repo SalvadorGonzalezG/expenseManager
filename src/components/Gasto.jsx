@@ -38,8 +38,11 @@ const Gasto = ({ gasto, setEditGasto, deleteGasto }) => {
     //Funcion que permitira mover el gasto hacia la izquierda para poder Eliminar dicho gasto.
     const trailingActions = () => (
         <TrailingActions>
-            <SwipeAction onClick={()=>deleteGasto(id)}>
+            <SwipeAction onClick={()=>deleteGasto(id)}
+            destructive={true} //Animacion al eliminar un gasto.
+            >
                 <RiDeleteBin5Line/>
+                
             </SwipeAction>
         </TrailingActions>
     )
