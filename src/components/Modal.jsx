@@ -1,13 +1,21 @@
 import closeWindow from '../img/cancel.png'
 import Message from './Message'
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 
-const Modal = ({setModal, animarModal, setAnimarModal, guardarGasto}) => {
+const Modal = ({setModal, animarModal, setAnimarModal, guardarGasto, editGasto}) => {
         // nombre, cantidad, categoria de los gastos.
     const [nombre, setNombre] = useState('')
     const [cantidad, setCantidad] = useState(0)
     const [categoria, setCategoria] = useState('')
     const [ message, setMessage ] = useState('')
+    //:f que se ejecuta cuando el componente este listo ya que modal no es fijo.
+    useEffect(()=>{
+        if(Object.keys(editGasto).length > 0){
+            setNombre(editGasto.nombre)
+            setCantidad(editGasto.cantidad)
+            setCategoria(editGasto.categoria)
+        }
+    },[])
 
     const hideModal = () => {
         console.log('Ocultando la ventana modal.')

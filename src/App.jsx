@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Header from './components/Header'
 import IconNewExpense from './img/button.png'
 import Modal from './components/Modal'
@@ -18,6 +18,17 @@ function App() {
   const [gastos, setGastos] = useState([])
   // estado para poder editar el gasto. inicia como un objeto vacio ya que cada gasto es un objeto
   const [editGasto, setEditGasto ] = useState({})
+  // escucha los cambios que sucedan en el objeto de editGasto.
+  useEffect(()=>{
+    if(Object.keys(editGasto).length>0){
+      // mandamos llamar la funcion para abrir la ventana modal y mandar los datos para que aparezcan y puedan ser editados.
+    setModal(true)
+
+    setTimeout(()=>{
+      setAnimarModal(true)
+    },500);
+    }
+  },[editGasto])
 
   const handleNewExpense = () => {
     console.log('Haz abierto la ventana modal')
@@ -70,6 +81,7 @@ function App() {
         )}
 
         {modal && <Modal
+                  editGasto={editGasto}
                   setModal={setModal}
                   animarModal={animarModal}
                   setAnimarModal={setAnimarModal}
