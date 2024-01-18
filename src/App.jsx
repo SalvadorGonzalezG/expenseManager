@@ -7,7 +7,8 @@ import { generarId } from './helpers'
 
 function App() {
   // estado para presupuesto inicializado en 0.
-  const [budget, setBudget]= useState(0)
+  const [budget, setBudget]= useState(
+    Number(localStorage.getItem('budget')) ?? 0)
   // estado donde el estado inicia como false ya que la primera vez que carga la app comienza como falso el estado.
   const [isValidBudget, setIsValidBudget] = useState(false)
   // estado para una ventana modal colocandp I.S como false para que se muestre hasta dar click.
@@ -30,6 +31,18 @@ function App() {
     },500);
     }
   },[editGasto])
+
+  useEffect(()=>{
+    // guardando en localStorage en budget de no estar presente colocar un 0.
+    localStorage.setItem('budget', budget ?? 0)
+  },[budget])
+
+  useEffect(()=>{
+    const budgetLocalStorage = Number(localStorage.getItem('budget')) ?? 0
+    if(budgetLocalStorage > 0){
+      setIsValidBudget(true)
+    }
+  })
 
   const handleNewExpense = () => {
     console.log('Haz abierto la ventana modal')
