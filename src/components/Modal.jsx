@@ -9,7 +9,7 @@ const Modal = ({setModal, animarModal, setAnimarModal, guardarGasto, editGasto})
     const [categoria, setCategoria] = useState('')
     const [ message, setMessage ] = useState('')
     const [ id, setId ] = useState('')
-    const [ fecha, setFecha ] = useState()
+    const [ date, setDate ] = useState()
     //:f que se ejecuta cuando el componente este listo ya que modal no es fijo.
     useEffect(()=>{
         if(Object.keys(editGasto).length > 0){
@@ -17,7 +17,7 @@ const Modal = ({setModal, animarModal, setAnimarModal, guardarGasto, editGasto})
             setCantidad(editGasto.cantidad)
             setCategoria(editGasto.categoria)
             setId(editGasto.id)
-            setFecha(editGasto.fecha)
+            setDate(editGasto.date)
         }
     },[])
 
@@ -43,7 +43,7 @@ const Modal = ({setModal, animarModal, setAnimarModal, guardarGasto, editGasto})
             return;
         }
         // pasamos el estado con el valor de cada uno de los campos
-        guardarGasto({nombre, cantidad, categoria, id, fecha})
+        guardarGasto({nombre, cantidad, categoria, id, date})
     }
 
   return (
