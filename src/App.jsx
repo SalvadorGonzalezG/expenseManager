@@ -16,6 +16,8 @@ function App() {
   const [animarModal, setAnimarModal] = useState(false)
   // estado de gastos.
   const [gastos, setGastos] = useState([])
+  // estado para poder editar el gasto. inicia como un objeto vacio ya que cada gasto es un objeto
+  const [editGasto, setEditGasto ] = useState({})
 
   const handleNewExpense = () => {
     console.log('Haz abierto la ventana modal')
@@ -53,6 +55,7 @@ function App() {
             <main>
               <ExpenseList
               gastos={gastos}
+              setEditGasto={setEditGasto}
               />
             </main>
 

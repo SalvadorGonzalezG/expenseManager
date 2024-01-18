@@ -24,13 +24,13 @@ const dictionaryIcons = {
 }
 
 
-const Gasto = ({ gasto }) => {
+const Gasto = ({ gasto, setEditGasto }) => {
     // desestructuracion del prop de gasto
     const { nombre, categoria, cantidad, id, date } = gasto;
     // funcion que permitira el movimiento hacia la parte derecha mostrando editar para que el gasto sea editado.
     const leadingActions = () => (
         <LeadingActions>
-            <SwipeAction onClick={()=>console.log('Edit')}>
+            <SwipeAction onClick={()=>setEditGasto(gasto)}>
                 <FaRegEdit/>
             </SwipeAction>
         </LeadingActions>
