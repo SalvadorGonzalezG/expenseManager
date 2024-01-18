@@ -19,6 +19,7 @@ function App() {
   // estado para poder editar el gasto. inicia como un objeto vacio ya que cada gasto es un objeto
   const [editGasto, setEditGasto ] = useState({})
   // escucha los cambios que sucedan en el objeto de editGasto.
+  
   useEffect(()=>{
     if(Object.keys(editGasto).length>0){
       // mandamos llamar la funcion para abrir la ventana modal y mandar los datos para que aparezcan y puedan ser editados.
@@ -40,9 +41,18 @@ function App() {
   }
 
   const guardarGasto = (gasto) =>{
-    gasto.id = generarId()
+    // si hay un id de un gasto existente, vamos a actualizar 
+    if(gasto.id){
+    // de otra forma es un nuevo gasto
+    const gastosActualization = gastos.map(gastoState => gastoState.id === gasto.id ? gasto : gastoState)
+    setGastos(gastosActualization)
+    } else {
+      //nuevo gasto
+      gasto.id = generarId()
     gasto.date = Date.now() //fecha cuando se generas el nuevo gasto.
     setGastos([...gastos, gasto])
+    }
+    
 
     setAnimarModal(false)
     setTimeout(()=>{
