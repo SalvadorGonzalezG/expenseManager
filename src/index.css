@@ -145,7 +145,17 @@ header h1 {
     border-left: 5px solid #fe4f4f;
     color: #fe4f4f;
 }
-.alerta.success {
+.git{
+    border-radius: 10px;
+    color: white;
+    background-color: rgb(98, 208, 247);
+    border: 0;
+    margin-left: 320px;
+    margin-block-end: 7px;
+    
+}
+.añadir{
+    border-radius: 20px;   
 }
 
 .contenedor {

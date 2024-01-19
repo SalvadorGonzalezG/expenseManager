@@ -1,5 +1,6 @@
 import {useState} from 'react'
 import Message from './Message'
+import { FcDebt } from "react-icons/fc";
 
 const NewBudget = ({
     budget, 
@@ -29,7 +30,7 @@ const NewBudget = ({
     <div className="contenedor-presupuesto contenedor sombra">
         <form onSubmit={handleBudgte} className="formulario">
             <div className="campo">
-                <label>Presupuesto total:</label>
+                <label>¿Cual es tu presupuesto total?</label>
                 <input
                   className="nuevo-presupuesto"
                   type="number" 
@@ -40,13 +41,16 @@ const NewBudget = ({
                   
             </div>
             <input 
+            className='añadir'
               type="submit" 
               value="añadir" 
               />
             {message && <Message tipo="error">{message}</Message>}
+            
         </form>
-        
+        <h1><FcDebt/></h1>
     </div>
+    
   )
 }
 
