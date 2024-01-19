@@ -16,7 +16,10 @@ function App() {
   // cuando este en true se agrega una clase para hacer la animacion
   const [animarModal, setAnimarModal] = useState(false)
   // estado de gastos.
-  const [gastos, setGastos] = useState([])
+  const [gastos, setGastos] = useState(
+    //si existe entonces hacemos la conversion de un string a un arreglo en caso contrario que inicie como un arreglo vacio.
+    localStorage.getItem('gastos') ? JSON.parse(localStorage.getItem('gastos')) : []
+  )
   // estado para poder editar el gasto. inicia como un objeto vacio ya que cada gasto es un objeto
   const [editGasto, setEditGasto ] = useState({})
   // escucha los cambios que sucedan en el objeto de editGasto.
@@ -38,11 +41,18 @@ function App() {
   },[budget])
 
   useEffect(()=>{
+    // como es un arreglo hacemos la conversion con JSON.stringify.
+localStorage.setItem('gastos', JSON.stringify(gastos) ?? [] )
+  },[gastos])
+
+    // Guardando el presupuesto en localStorage.
+  useEffect(()=>{
     const budgetLocalStorage = Number(localStorage.getItem('budget')) ?? 0
     if(budgetLocalStorage > 0){
       setIsValidBudget(true)
     }
-  })
+  },[])
+  
 
   const handleNewExpense = () => {
     console.log('Haz abierto la ventana modal')
