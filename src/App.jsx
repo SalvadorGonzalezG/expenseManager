@@ -107,7 +107,8 @@ localStorage.setItem('gastos', JSON.stringify(gastos) ?? [] )
     <>
       <div className={modal ? 'fijar': '' }>
         <Header
-        gastos = {gastos}
+          gastos = {gastos}
+          setGastos = {setGastos}
           budget = {budget}
           setBudget = {setBudget}
           isValidBudget = {isValidBudget}

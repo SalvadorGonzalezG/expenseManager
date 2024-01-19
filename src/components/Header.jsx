@@ -4,6 +4,7 @@ import ControlBudget from './ControlBudget'
 
     // extraemos el prop de app.jsx
 const Header = ({
+    setGastos,
     gastos,
     budget,
     setBudget, 
@@ -21,6 +22,8 @@ const Header = ({
             < ControlBudget
               gastos={gastos}
               budget={budget}
+              setGastos={setGastos}
+              setBudget={setBudget}
             />
         ): (
             <NewBudget
