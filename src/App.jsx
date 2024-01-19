@@ -4,6 +4,7 @@ import IconNewExpense from './img/button.png'
 import Modal from './components/Modal'
 import ExpenseList from './components/ExpenseList'
 import { generarId } from './helpers'
+import Filters from './components/Filters'
 
 function App() {
   // estado para presupuesto inicializado en 0.
@@ -22,8 +23,12 @@ function App() {
   )
   // estado para poder editar el gasto. inicia como un objeto vacio ya que cada gasto es un objeto
   const [editGasto, setEditGasto ] = useState({})
+  // Estado para los filtros
+  const [filter, setFilter] = useState('')
+
+  const [gastosFilter, setGastosFilter] = useState([])
+
   // escucha los cambios que sucedan en el objeto de editGasto.
-  
   useEffect(()=>{
     if(Object.keys(editGasto).length>0){
       // mandamos llamar la funcion para abrir la ventana modal y mandar los datos para que aparezcan y puedan ser editados.
@@ -44,6 +49,15 @@ function App() {
     // como es un arreglo hacemos la conversion con JSON.stringify.
 localStorage.setItem('gastos', JSON.stringify(gastos) ?? [] )
   },[gastos])
+
+  useEffect(()=>{
+    // si hay algo en el filtro filtralo por categoria
+    if(filter){
+      //filtrar por categoria
+      const gastosFiltrados = gastos.filter( gasto=> gasto.categoria === filter)
+      setGastosFilter(gastosFilter)
+    }
+  },[filter])
 
     // Guardando el presupuesto en localStorage.
   useEffect(()=>{
@@ -103,10 +117,16 @@ localStorage.setItem('gastos', JSON.stringify(gastos) ?? [] )
         {isValidBudget && (
           <>
             <main>
+              <Filters
+              filter={filter}
+              setFilter={setFilter}
+              />
               <ExpenseList
               gastos={gastos}
               setEditGasto={setEditGasto}
               deleteGasto = {deleteGasto}
+              filter={filter}
+              gastosFilter={gastosFilter}
               />
             </main>
 
