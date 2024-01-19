@@ -1,6 +1,7 @@
 import React from 'react'
 import NewBudget from './NewBudget'
 import ControlBudget from './ControlBudget'
+import { FaGithub } from "react-icons/fa";
 
     // extraemos el prop de app.jsx
 const Header = ({
@@ -15,7 +16,7 @@ const Header = ({
   return (
     <header>
         <h1>Control de gastos</h1>
-        <button className='git'><a href="https://github.com/SalvadorGonzalezG/expenseManager" target='blank'>GitHub</a></button>
+        <button className='git'><a href="https://github.com/SalvadorGonzalezG/expenseManager" target='blank'>GitH.<FaGithub /></a></button>
         {isValidBudget ? (
             < ControlBudget
               gastos={gastos}

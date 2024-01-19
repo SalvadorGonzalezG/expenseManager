@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react'
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar'
 import 'react-circular-progressbar/dist/styles.css'
+import { RiDeleteBinLine } from "react-icons/ri";
 
 const ControlBudget = ({budget, gastos, setGastos, setBudget, setIsValidBudget}) => {
 
@@ -61,7 +62,7 @@ const ControlBudget = ({budget, gastos, setGastos, setBudget, setIsValidBudget})
         </div>
         <div className='contenido-presupuesto'>
             <button className='reset-app ' type='button' onClick={handleResetApp}>
-                Reset Gastos
+               Reset
             </button>
             <p>
                 <span>Presupuesto: </span> {currencyFormat(budget)}
